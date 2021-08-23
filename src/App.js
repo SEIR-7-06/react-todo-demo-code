@@ -37,7 +37,7 @@ class App extends React.Component {
     const todosListJSX = [];
     
     // forEach method - loops through todoList array
-    // for each array push a <li> into todosListJSX
+    // for each item push a <li> into todosListJSX
     this.state.todoList.forEach((todo) => {
       const todoJSX = <li>{todo}</li>;
       
