@@ -45,14 +45,11 @@ class App extends React.Component {
     });
     
     // todoListJSX => [<li>crush some code</li>, <li>make a dope app</li>]
-
     return todosListJSX;
   }
 
 
   render() {
-    this.renderTodos();
-
     return (
       <div className="App">
         <h1>React Todo List</h1>
