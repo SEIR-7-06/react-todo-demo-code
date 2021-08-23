@@ -4,7 +4,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     inputVal: '',
-    todoList: ['crush some code', 'make a dope app']
+    todoList: ['crush some code', 'make a dope app', 'party']
   }
 
   // event is an object with information about the typing event
@@ -31,16 +31,20 @@ class App extends React.Component {
   handleDeleteOne = (idx) => {
     console.log('Tried to delete one! Index:', idx);
 
-    // Todo:
-    // Remove the item from the todoList for the particular index we clicked on
+    // 1. Make a copy of the todoList
+    const updatedTodos = [...this.state.todoList];
 
+    // 2. Remove the todo from the list
+    updatedTodos.splice(idx, 1);
+
+    // 3. Update todoList in state
+    this.setState({ todoList: updatedTodos });
   }
 
   // Converts the array of todos into an array of JSX
   // this.state.todoList => ['crush some code', 'make a dope app']
-  // todoListJSX => [<li>crush some code</li>, <li>make a dope app</li>]
+  // todosListJSX => [<li>crush some code</li>, <li>make a dope app</li>]
   renderTodos() {
-    
     const todosListJSX = [];
     
     // forEach method - loops through todoList array
@@ -53,7 +57,7 @@ class App extends React.Component {
           <button onClick={() => this.handleDeleteOne(idx)}>x</button>
         </li>
       );
-      
+
       todosListJSX.push(todoJSX);
     });
 
@@ -73,7 +77,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>React Todo List</h1>
-  
+
         <form onSubmit={this.addTodo}>
           <input 
             type="text" 
@@ -81,7 +85,7 @@ class App extends React.Component {
             value={this.state.inputVal} 
             onChange={this.handleInputChange}
           />
-  
+
           <input type="submit" value="Add Todo" />
         </form>
 
