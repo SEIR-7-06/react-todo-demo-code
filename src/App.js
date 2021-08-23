@@ -32,18 +32,19 @@ class App extends React.Component {
 
   // Converts the array of todos into an array of JSX
   renderTodos() {
-    // ['crush some code', 'make a dope app']
+    // this.state.todoList => ['crush some code', 'make a dope app']
     
-    // forEach method
     const todosListJSX = [];
     
+    // forEach method - loops through todoList array
+    // for each array push a <li> into todosListJSX
     this.state.todoList.forEach((todo) => {
       const todoJSX = <li>{todo}</li>;
       
       todosListJSX.push(todoJSX);
     });
     
-    // [<li>crush some code</li>, <li>make a dope app</li>]
+    // todoListJSX => [<li>crush some code</li>, <li>make a dope app</li>]
 
     return todosListJSX;
   }
