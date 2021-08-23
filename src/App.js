@@ -35,11 +35,11 @@ class App extends React.Component {
     // Remove the item from the todoList for the particular index we clicked on
 
   }
-  
 
   // Converts the array of todos into an array of JSX
+  // this.state.todoList => ['crush some code', 'make a dope app']
+  // todoListJSX => [<li>crush some code</li>, <li>make a dope app</li>]
   renderTodos() {
-    // this.state.todoList => ['crush some code', 'make a dope app']
     
     const todosListJSX = [];
     
@@ -56,8 +56,7 @@ class App extends React.Component {
       
       todosListJSX.push(todoJSX);
     });
-    
-    // todoListJSX => [<li>crush some code</li>, <li>make a dope app</li>]
+
     return todosListJSX;
   }
 
