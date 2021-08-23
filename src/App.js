@@ -25,10 +25,17 @@ class App extends React.Component {
       this.state.inputVal
     ];
 
-    this.setState({ todoList: updatedList });
+    this.setState({ todoList: updatedList, inputVal: '' });
   }
 
-  // Does not need to be an arrow function because it is not triggered by a DOM event (clicking, submitting a form, typing into input, etc...)
+  handleDeleteOne = (idx) => {
+    console.log('Tried to delete one! Index:', idx);
+
+    // Todo:
+    // Remove the item from the todoList for the particular index we clicked on
+
+  }
+  
 
   // Converts the array of todos into an array of JSX
   renderTodos() {
@@ -38,8 +45,14 @@ class App extends React.Component {
     
     // forEach method - loops through todoList array
     // for each item push a <li> into todosListJSX
-    this.state.todoList.forEach((todo) => {
-      const todoJSX = <li>{todo}</li>;
+    this.state.todoList.forEach((todo, idx) => {
+      const todoJSX = (
+        <li key={idx}>
+          <span>{todo}</span>
+          {" "}
+          <button onClick={() => this.handleDeleteOne(idx)}>x</button>
+        </li>
+      );
       
       todosListJSX.push(todoJSX);
     });
@@ -48,6 +61,14 @@ class App extends React.Component {
     return todosListJSX;
   }
 
+  // Activity
+  // - Create a method to handle when the clear button is clicked
+  // - Inside of the method, update state to get rid of all todos
+
+  handleDelete = (event) => {
+    // this.setState({ todoList: this.state.todoList.splice(event, 0) })
+    this.setState({ todoList: [] });
+  }
 
   render() {
     return (
@@ -64,6 +85,9 @@ class App extends React.Component {
   
           <input type="submit" value="Add Todo" />
         </form>
+
+        <br />
+        <button onClick={this.handleDelete}>Clear All Todos</button>
 
         <ul>
           {this.renderTodos()}
