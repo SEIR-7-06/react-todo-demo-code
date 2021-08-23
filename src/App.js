@@ -15,13 +15,9 @@ class App extends React.Component {
     this.setState({ inputVal: event.target.value });
   }
 
-  // We use an arrow function becuase this function is triggered by a DOM event (submitting the form)
   addTodo = (event) => {
     // Stop the page from refreshing (browser's default behavior)
     event.preventDefault();
-
-    // Note: We never want to update state directly. Only through calling 'setState()'
-    // this.state.todoList.push(this.state.inputVal);
 
     // Create a new array with our existing todoList and combining it with the new todo
     const updatedList = [
@@ -70,7 +66,7 @@ class App extends React.Component {
   
           <input type="submit" value="Add Todo" />
         </form>
-        
+
         <ul>
           {this.renderTodos()}
         </ul>

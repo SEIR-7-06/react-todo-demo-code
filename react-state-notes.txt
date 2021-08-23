@@ -1,0 +1,11 @@
+React State
+- We never want to update state directly. Only through calling 'setState()'
+
+Not this
+this.state.todoList.push(this.state.inputVal);
+
+This
+this.setState({ todoList: updatedTodos });
+
+
+Use an arrow function becuase when the function is triggered by a DOM event (submitting the form)
